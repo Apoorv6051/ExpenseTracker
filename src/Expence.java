@@ -6,7 +6,7 @@ public class Expence {
     private String Description; //We don't want other parts of the program directly changing the
     private LocalDate date; //We don't want other parts of the program directly changing the
 
-    public Expence(Double amount, String category, String Descripition , LocalDate date){  // this is constructor (It creates and initializes an Expense object.)
+    public Expence(Double amount, String category, String Description , LocalDate date){  // this is constructor (It creates and initializes an Expense object.)
 
         this.amount = amount;
         this.category = category;
