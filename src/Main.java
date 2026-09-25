@@ -1,9 +1,9 @@
 import java.time.LocalDate;
 
-public class main {
+public class Main {
     public static void main(String[] args) {
 
-        Expence expense = new Expence(
+        Expence expense = new Expence( //creates one Expense object:
                 250.0,
                 "food",
                 "luch",
