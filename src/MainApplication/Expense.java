@@ -1,3 +1,5 @@
+package MainApplication;
+
 import java.time.LocalDate;
 public class Expense {
             // these are the data belong to Expences
@@ -6,7 +8,7 @@ public class Expense {
     private String Description; //We don't want other parts of the program directly changing the
     private LocalDate date; //We don't want other parts of the program directly changing the
 
-    public Expense(Double amount, String category, String Description , LocalDate date){  // this is constructor (It creates and initializes an Expense object.)
+    public Expense(Double amount, String category, String Description , LocalDate date){  // this is constructor (It creates and initializes an MainApplication.Expense object.)
 
         this.amount = amount;
         this.category = category;

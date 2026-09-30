@@ -1,4 +1,4 @@
-# Expense Tracker
+# MainApplication.Expense Tracker
 
 A personal finance management Android application designed to help users track
 expenses and income, automatically detect eligible bank transaction SMS,
@@ -71,7 +71,7 @@ that can:
 
 - [x] Java project setup
 - [x] GitHub repository setup
-- [x] Expense model using OOP
+- [x] MainApplication.Expense model using OOP
 - [x] ArrayList for storing expenses
 - [x] Add expenses
 - [x] View expenses
@@ -98,7 +98,7 @@ that can:
 - [ ] Handle user input
 - [ ] Navigation between screens
 
-### Phase 4 — Android Expense Tracker
+### Phase 4 — Android MainApplication.Expense Tracker
 
 - [ ] Add income
 - [ ] Add expenses
@@ -118,7 +118,7 @@ that can:
 - [ ] Extract merchant information
 - [ ] Extract transaction date
 - [ ] Build transaction parser
-- [ ] Convert detected transactions into Expense/Income records
+- [ ] Convert detected transactions into MainApplication.Expense/Income records
 
 ### Phase 6 — AI Features
 
@@ -150,6 +150,6 @@ User
   ↓
 Java Console Application
   ↓
-Expense Objects
+MainApplication.Expense Objects
   ↓
 ArrayList

@@ -1,3 +1,5 @@
+package MainApplication;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -10,9 +12,9 @@ public class Main {
         // Create a Scanner object to take input from the user.
         Scanner sc = new Scanner(System.in);
 
-        // ArrayList is used to store multiple Expense objects.
+        // ArrayList is used to store multiple MainApplication.Expense objects.
         //
-        // Each time the user adds an expense, a new Expense object
+        // Each time the user adds an expense, a new MainApplication.Expense object
         // will be created and stored inside this ArrayList.
         ArrayList<Expense> expenses = new ArrayList<>();
 
@@ -29,7 +31,7 @@ public class Main {
             // ==============================
 
             System.out.println("\n===== EXPENSE TRACKER =====");
-            System.out.println("1. Add Expense");
+            System.out.println("1. Add MainApplication.Expense");
             System.out.println("2. View Expenses");
             System.out.println("3. Show Total");
             System.out.println("4. Exit");
@@ -80,7 +82,7 @@ public class Main {
                 //    -> used to take input from the user.
                 //
                 // 2. expenses ArrayList
-                //    -> used to store the new Expense object.
+                //    -> used to store the new MainApplication.Expense object.
                 addExpense(sc, expenses);
 
 
@@ -119,7 +121,7 @@ public class Main {
 
                 // Display a message before exiting the program.
                 System.out.println(
-                        "Thank you for using Expense Tracker!"
+                        "Thank you for using MainApplication.Expense Tracker!"
                 );
 
 
@@ -152,15 +154,15 @@ public class Main {
     // Scanner sc:
     // Used to take input from the user.
     //
-    // ArrayList<Expense> expenses:
-    // Used to store the newly created Expense object.
+    // ArrayList<MainApplication.Expense> expenses:
+    // Used to store the newly created MainApplication.Expense object.
     //
     static void addExpense(
             Scanner sc,
             ArrayList<Expense> expenses
     ) {
 
-        // Variables required to create an Expense object.
+        // Variables required to create an MainApplication.Expense object.
         double amount;
         String category;
         String description;
@@ -255,7 +257,7 @@ public class Main {
                     // CREATE EXPENSE OBJECT
                     // ==========================================
 
-                    // Create a new Expense object using
+                    // Create a new MainApplication.Expense object using
                     // the information entered by the user.
                     //
                     // LocalDate.now() automatically stores
@@ -271,7 +273,7 @@ public class Main {
                     // Inform the user that the expense
                     // has been successfully added.
                     System.out.println(
-                            "Expense added successfully!"
+                            "MainApplication.Expense added successfully!"
                     );
                 }
 
@@ -312,8 +314,8 @@ public class Main {
     // We only need the ArrayList here because
     // we are not taking any input from the user.
     //
-    // ArrayList<Expense> expenses:
-    // Contains all the Expense objects that have
+    // ArrayList<MainApplication.Expense> expenses:
+    // Contains all the MainApplication.Expense objects that have
     // been added by the user.
     //
     static void viewExpenses(ArrayList<Expense> expenses) {
@@ -327,7 +329,7 @@ public class Main {
         // ==========================================
 
         // isEmpty() returns true if the ArrayList
-        // does not contain any Expense objects.
+        // does not contain any MainApplication.Expense objects.
         //
         // This prevents us from displaying an empty list.
         if (expenses.isEmpty()) {
@@ -343,9 +345,9 @@ public class Main {
             // ==========================================
 
             // Enhanced for-loop is used to visit
-            // every Expense object inside the ArrayList.
+            // every MainApplication.Expense object inside the ArrayList.
             //
-            // "expense" represents one Expense object
+            // "expense" represents one MainApplication.Expense object
             // at a time.
             for (Expense expense : expenses) {
 
@@ -384,8 +386,8 @@ public class Main {
     // This method is responsible only for calculating
     // and displaying the total amount of all expenses.
     //
-    // ArrayList<Expense> expenses:
-    // Contains all the Expense objects whose amounts
+    // ArrayList<MainApplication.Expense> expenses:
+    // Contains all the MainApplication.Expense objects whose amounts
     // need to be added together.
     //
     static void showTotal(ArrayList<Expense> expenses) {
@@ -402,7 +404,7 @@ public class Main {
         // CALCULATE TOTAL
         // ==========================================
 
-        // Enhanced for-loop visits every Expense object
+        // Enhanced for-loop visits every MainApplication.Expense object
         // stored inside the ArrayList.
         for (Expense expense : expenses) {
 
