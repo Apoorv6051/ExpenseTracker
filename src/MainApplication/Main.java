@@ -18,7 +18,7 @@ public class Main {
         int choice = 0;
 
         // Keep running until the user chooses Exit.
-        while (choice != 6) {
+        while (choice != 7) {
 
             System.out.println("\n===== EXPENSE TRACKER =====");
             System.out.println("1. Add Expense");
@@ -26,7 +26,8 @@ public class Main {
             System.out.println("3. Show Total");
             System.out.println("4. Delete Expense");
             System.out.println("5. Edit Expense");
-            System.out.println("6. Exit");
+            System.out.println("6. Filter by Category");
+            System.out.println("7. Exit");
 
             System.out.print("Enter your choice: ");
 
@@ -55,6 +56,16 @@ public class Main {
                 editExpense(sc, expenses);
 
             } else if (choice == 6) {
+                //Clear the new line by nextInt();
+                sc.nextLine();
+
+                // filter expense by category
+                filterByCategory(sc, expenses);
+
+
+            } else if (choice == 7) {
+
+                // Exit the application.
                 System.out.println("Thank you for using Expense Tracker!");
 
             } else {
@@ -257,7 +268,7 @@ public class Main {
             expense.setCategory(newCategory);
         }
 
-        // Update the descrip;tion only if a new value is provided.
+        // Update the description only if a new value is provided.
         System.out.print(
                 "New description (" + expense.getDescription() + "): "
         );
@@ -271,5 +282,34 @@ public class Main {
         ExpenseFileManager.saveExpenses(expenses);
 
         System.out.println("Expense updated successfully!");
+    }
+    // Displays expenses matching the selected category.
+
+    static void filterByCategory(Scanner sc, ArrayList<Expense> expenses) {
+        if (expenses.isEmpty()) {
+            System.out.println("No expenses available to filter by.");
+            return;
+        }
+        System.out.println("Enter category to search: ");
+        String searchCategory = sc.nextLine().trim();
+
+        boolean found = false;
+
+        // check every expense for matching category
+        for (Expense expense : expenses) {
+            if (expense.getCategory()
+                    .equalsIgnoreCase(searchCategory)) {
+                System.out.println("Amount: " + expense.getAmount());
+                System.out.println("Category: " + expense.getCategory());
+                System.out.println("Description: " + expense.getDescription());
+                System.out.println("Date: " + expense.getDate());
+                System.out.println("---------------------------");
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No expenses found in this category.");
+        }
+
     }
 }
