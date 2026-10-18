@@ -2,6 +2,7 @@
 package MainApplication;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -18,7 +19,7 @@ public class Main {
         int choice = 0;
 
         // Keep running until the user chooses Exit.
-        while (choice != 7) {
+        while (choice != 9) {
 
             System.out.println("\n===== EXPENSE TRACKER =====");
             System.out.println("1. Add Expense");
@@ -27,7 +28,9 @@ public class Main {
             System.out.println("4. Delete Expense");
             System.out.println("5. Edit Expense");
             System.out.println("6. Filter by Category");
-            System.out.println("7. Exit");
+            System.out.println("7. Filter by Date");
+            System.out.println("8. Filter by Month");
+            System.out.println("9. Exit");
 
             System.out.print("Enter your choice: ");
 
@@ -37,6 +40,7 @@ public class Main {
                 System.out.println("Please enter a valid number.");
                 sc.nextLine();
                 choice = 0;
+                continue;
             }
 
             if (choice == 1) {
@@ -50,22 +54,26 @@ public class Main {
                 showTotal(expenses);
 
             } else if (choice == 4) {
+                // Clear the newline left by nextInt().
+                sc.nextLine();
                 deleteExpense(sc, expenses);
 
             } else if (choice == 5) {
                 editExpense(sc, expenses);
 
             } else if (choice == 6) {
-                //Clear the new line by nextInt();
                 sc.nextLine();
-
-                // filter expense by category
                 filterByCategory(sc, expenses);
 
-
             } else if (choice == 7) {
+                sc.nextLine();
+                filterByDate(sc, expenses);
 
-                // Exit the application.
+            } else if (choice == 8) {
+                sc.nextLine();
+                filterByMonth(sc, expenses);
+
+            } else if (choice == 9) {
                 System.out.println("Thank you for using Expense Tracker!");
 
             } else {
@@ -101,6 +109,7 @@ public class Main {
             }
         }
 
+        // Clear the newline left after reading the amount.
         sc.nextLine();
 
         // Require a non-empty category.
@@ -123,7 +132,7 @@ public class Main {
             }
         } while (description.isEmpty());
 
-        // Create and store the new expense.
+        // Create and store the expense using today's date.
         Expense expense = new Expense(
                 amount, category, description, LocalDate.now()
         );
@@ -187,6 +196,7 @@ public class Main {
             return;
         }
 
+        // Validate the selected expense number.
         if (expenseNumber < 1 || expenseNumber > expenses.size()) {
             System.out.println("Invalid expense number. Nothing was deleted.");
             return;
@@ -269,9 +279,7 @@ public class Main {
         }
 
         // Update the description only if a new value is provided.
-        System.out.print(
-                "New description (" + expense.getDescription() + "): "
-        );
+        System.out.print("New description (" + expense.getDescription() + "): ");
         String newDescription = sc.nextLine().trim();
 
         if (!newDescription.isEmpty()) {
@@ -283,33 +291,209 @@ public class Main {
 
         System.out.println("Expense updated successfully!");
     }
-    // Displays expenses matching the selected category.
 
+    // Displays expenses matching the selected category.
     static void filterByCategory(Scanner sc, ArrayList<Expense> expenses) {
+
         if (expenses.isEmpty()) {
             System.out.println("No expenses available to filter by.");
             return;
         }
-        System.out.println("Enter category to search: ");
+
+        System.out.print("Enter category to search: ");
         String searchCategory = sc.nextLine().trim();
 
         boolean found = false;
 
-        // check every expense for matching category
+        // Check every expense for a matching category.
         for (Expense expense : expenses) {
-            if (expense.getCategory()
-                    .equalsIgnoreCase(searchCategory)) {
+            if (expense.getCategory().equalsIgnoreCase(searchCategory)) {
                 System.out.println("Amount: " + expense.getAmount());
                 System.out.println("Category: " + expense.getCategory());
                 System.out.println("Description: " + expense.getDescription());
                 System.out.println("Date: " + expense.getDate());
                 System.out.println("---------------------------");
+
                 found = true;
             }
         }
+
+        // Display this message only if there are no matches.
         if (!found) {
             System.out.println("No expenses found in this category.");
         }
+    }
 
+    // Displays expenses recorded on a particular date.
+    static void filterByDate(Scanner sc, ArrayList<Expense> expenses) {
+
+        if (expenses.isEmpty()) {
+            System.out.println("No expenses available to filter.");
+            return;
+        }
+
+        System.out.print("Enter date (YYYY-MM-DD): ");
+        String dateInput = sc.nextLine().trim();
+
+        // Parse the date safely.
+        LocalDate selectedDate;
+
+        try {
+            selectedDate = LocalDate.parse(dateInput);
+        } catch (DateTimeParseException e) {
+            System.out.println(
+                    "Invalid date. Please use YYYY-MM-DD format."
+            );
+            return;
+        }
+
+        boolean found = false;
+
+        // Display every expense matching the selected date.
+        for (Expense expense : expenses) {
+            if (expense.getDate().equals(selectedDate)) {
+                System.out.println("Amount: " + expense.getAmount());
+                System.out.println("Category: " + expense.getCategory());
+                System.out.println("Description: " + expense.getDescription());
+                System.out.println("Date: " + expense.getDate());
+                System.out.println("---------------------------");
+
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No expenses found for this date.");
+        }
+    }
+
+    // Displays expenses for a selected month and year.
+    static void filterByMonth(Scanner sc, ArrayList<Expense> expenses) {
+
+        if (expenses.isEmpty()) {
+            System.out.println("No expenses available to filter.");
+            return;
+        }
+
+        int selectedMonth;
+        int selectedYear;
+
+        // Read and validate the month and year.
+        try {
+            System.out.print("Enter month (1-12): ");
+            selectedMonth = Integer.parseInt(sc.nextLine().trim());
+
+            if (selectedMonth < 1 || selectedMonth > 12) {
+                System.out.println(
+                        "Invalid month. Enter a value from 1 to 12."
+                );
+                return;
+            }
+
+            System.out.print("Enter year (e.g. 2026): ");
+            selectedYear = Integer.parseInt(sc.nextLine().trim());
+
+            if (selectedYear < 1 || selectedYear > 9999) {
+                System.out.println("Invalid year.");
+                return;
+            }
+
+        } catch (NumberFormatException e) {
+            System.out.println("Please enter valid whole numbers.");
+            return;
+        }
+
+        boolean found = false;
+
+        // Match both the month and year of each expense.
+        for (Expense expense : expenses) {
+            if (expense.getDate().getMonthValue() == selectedMonth
+                    && expense.getDate().getYear() == selectedYear) {
+
+                System.out.println("Amount: " + expense.getAmount());
+                System.out.println("Category: " + expense.getCategory());
+                System.out.println("Description: " + expense.getDescription());
+                System.out.println("Date: " + expense.getDate());
+                System.out.println("---------------------------");
+
+                found = true;
+            }
+        }
+
+        // Report if no expenses match the selected month and year.
+        if (!found) {
+            System.out.println(
+                    "No expenses found for this month and year."
+            );
+        }
+    }
+    // Calculates the total spending for a selected month and year.
+    static void monthlyExpenseSummary(Scanner sc, ArrayList<Expense> expenses) {
+
+        // Check whether any expenses are available.
+        if (expenses.isEmpty()) {
+            System.out.println("No expenses available for monthly summary.");
+            return;
+        }
+
+        int month;
+        int year;
+
+        // Ask the user for the month and validate the input.
+        try {
+            System.out.print("Enter month (1-12): ");
+            month = Integer.parseInt(sc.nextLine().trim());
+
+            // Ensure the month is between 1 and 12.
+            if (month < 1 || month > 12) {
+                System.out.println("Invalid month! Please enter a month between 1 and 12.");
+                return;
+            }
+
+            // Ask the user for the year.
+            System.out.print("Enter year (e.g., 2026): ");
+            year = Integer.parseInt(sc.nextLine().trim());
+
+            // Ensure the year is valid.
+            if (year < 1 || year > 9999) {
+                System.out.println("Invalid year! Please enter a year between 1 and 9999.");
+                return;
+            }
+
+        } catch (NumberFormatException e) {
+            // Handle input that cannot be converted into an integer.
+            System.out.println("Invalid input! Please enter numeric values.");
+            return;
+        }
+
+        // Initialize the monthly total and matching-expense flag.
+        double monthlyTotal = 0.0;
+        boolean found = false;
+
+        // Check every expense against the selected month and year.
+        for (Expense expense : expenses) {
+            if (expense.getDate().getMonthValue() == month
+                    && expense.getDate().getYear() == year) {
+
+                // Add the matching expense amount to the total.
+                monthlyTotal += expense.getAmount();
+
+                // Record that at least one matching expense exists.
+                found = true;
+            }
+        }
+
+        // Display the result after checking all expenses.
+        if (found) {
+            System.out.printf(
+                    "Total expenses for %02d/%d: ₹%.2f%n",
+                    month, year, monthlyTotal
+            );
+        } else {
+            System.out.printf(
+                    "No expenses found for %02d/%d.%n",
+                    month, year
+            );
+        }
     }
 }
