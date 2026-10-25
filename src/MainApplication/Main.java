@@ -1,4 +1,3 @@
-
 package MainApplication;
 
 import java.time.LocalDate;
@@ -13,13 +12,14 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
+
         // Load saved expenses when the application starts.
         ArrayList<Expense> expenses = ExpenseFileManager.loadExpenses();
 
         int choice = 0;
 
         // Keep running until the user chooses Exit.
-        while (choice != 9) {
+        while (choice != 11) {
 
             System.out.println("\n===== EXPENSE TRACKER =====");
             System.out.println("1. Add Expense");
@@ -30,10 +30,13 @@ public class Main {
             System.out.println("6. Filter by Category");
             System.out.println("7. Filter by Date");
             System.out.println("8. Filter by Month");
-            System.out.println("9. Exit");
+            System.out.println("9. Monthly Expense Summary");
+            System.out.println("10. Show Individual Expenses Graph");
+            System.out.println("11. Exit");
 
             System.out.print("Enter your choice: ");
 
+            // Handle non-numeric menu input.
             try {
                 choice = sc.nextInt();
             } catch (InputMismatchException e) {
@@ -74,6 +77,19 @@ public class Main {
                 filterByMonth(sc, expenses);
 
             } else if (choice == 9) {
+                // FIX: Consume the newline left by nextInt().
+                // This allows the summary method to read the month correctly.
+                sc.nextLine();
+                monthlyExpenseSummary(sc, expenses);
+
+            } else if (choice == 10) {
+
+                    // Graph functionality is planned for Version 2.
+                    System.out.println("This feature will be available in Version 2.");
+                    break;
+
+            }
+            else if (choice == 11) {
                 System.out.println("Thank you for using Expense Tracker!");
 
             } else {
@@ -81,6 +97,7 @@ public class Main {
             }
         }
 
+        // Close the scanner when the application exits.
         sc.close();
     }
 
@@ -96,6 +113,7 @@ public class Main {
                 System.out.print("Enter amount: ");
                 amount = sc.nextDouble();
 
+                // Reject non-positive, infinite, or NaN amounts.
                 if (!Double.isFinite(amount) || amount <= 0) {
                     System.out.println("Enter a valid positive amount.");
                     continue;
@@ -132,7 +150,7 @@ public class Main {
             }
         } while (description.isEmpty());
 
-        // Create and store the expense using today's date.
+        // Create the expense using today's date.
         Expense expense = new Expense(
                 amount, category, description, LocalDate.now()
         );
@@ -172,7 +190,7 @@ public class Main {
             totalExpense += expense.getAmount();
         }
 
-        System.out.println("Total Expenses: " + totalExpense);
+        System.out.printf("Total Expenses: ₹%.2f%n", totalExpense);
     }
 
     // Deletes an expense selected by its displayed number.
@@ -246,9 +264,11 @@ public class Main {
 
         System.out.println("\nLeave a field blank to keep its current value.");
 
+        // Consume the newline left by nextInt().
+        sc.nextLine();
+
         // Read and validate a replacement amount, if provided.
         System.out.print("New amount (" + expense.getAmount() + "): ");
-        sc.nextLine();
         String amountInput = sc.nextLine().trim();
 
         if (!amountInput.isEmpty()) {
@@ -427,8 +447,10 @@ public class Main {
             );
         }
     }
+
     // Calculates the total spending for a selected month and year.
-    static void monthlyExpenseSummary(Scanner sc, ArrayList<Expense> expenses) {
+    static void monthlyExpenseSummary(
+            Scanner sc, ArrayList<Expense> expenses) {
 
         // Check whether any expenses are available.
         if (expenses.isEmpty()) {
@@ -446,7 +468,9 @@ public class Main {
 
             // Ensure the month is between 1 and 12.
             if (month < 1 || month > 12) {
-                System.out.println("Invalid month! Please enter a month between 1 and 12.");
+                System.out.println(
+                        "Invalid month! Please enter a month between 1 and 12."
+                );
                 return;
             }
 
@@ -456,7 +480,9 @@ public class Main {
 
             // Ensure the year is valid.
             if (year < 1 || year > 9999) {
-                System.out.println("Invalid year! Please enter a year between 1 and 9999.");
+                System.out.println(
+                        "Invalid year! Please enter a year between 1 and 9999."
+                );
                 return;
             }
 
@@ -496,4 +522,5 @@ public class Main {
             );
         }
     }
+
 }
