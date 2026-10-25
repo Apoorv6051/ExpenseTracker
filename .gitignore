@@ -1,20 +1,20 @@
-### IntelliJ IDEA ###
+﻿### IntelliJ IDEA ###
 .idea/
 *.iml
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 
-.kotlin
+.kotlin/
 
 ### Eclipse ###
-.apt_generated
+.apt_generated/
 .classpath
 .factorypath
 .project
-.settings
+.settings/
 .springBeans
-.sts4-cache
+.sts4-cache/
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
@@ -26,11 +26,30 @@ bin/
 /nbdist/
 /.nb-gradle/
 
-### VS Code ###
+### Visual Studio Code ###
 .vscode/
 
-### Mac OS ###
+### macOS ###
 .DS_Store
 
-### MainApplication.Expense Tracker local data ###
+### Java compiled files ###
+*.class
+
+### Log files ###
+*.log
+
+### Gradle and Android build files ###
+.gradle/
+build/
+**/build/
+
+### Local Android SDK configuration ###
+local.properties
+
+### ExpenseTracker local data ###
 expenses.txt
+# Ignore bundled JFreeChart library source files
+# Ignore JFreeChart library files
+lib/jfreechart-1.5.6/
+lib/jfreechart-1.5.6.jar
+lib/jfreechart-1.5.6.zip
