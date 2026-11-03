@@ -16,10 +16,6 @@
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
     </ScrollView>
 
     <LinearLayout
@@ -116,6 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/add_expense"
+                android:textColor="#00796B"
                 tools:ignore="TextSizeCheck" />
 
             <Space
@@ -129,7 +126,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/view_history" />
+                android:text="@string/view_history"
+                android:textColor="#00796B" />
         </LinearLayout>
 
         <TextView
