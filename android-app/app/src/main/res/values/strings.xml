@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Expense Tracker</string>
+    <string name="expensetracker">ExpenseTracker</string>
+    <string name="manage_your_money_smartly">Manage your money smartly.</string>
+    <string name="total_expenses_this_month">TOTAL EXPENSES THIS MONTH</string>
+    <string name="_0_00">₹0.00</string>
+    <string name="track_where_your_money_goes">Track where your money goes</string>
+    <string name="quick_actions">Quick Actions</string>
+    <string name="add_expense">Add Expense</string>
+    <string name="view_history">View History</string>
+    <string name="recent_expenses">Recent Expenses</string>
+    <string name="no_expenses_yet">No expenses yet</string>
+    <string name="your_transactions_will_appear_here">Your transactions will appear here</string>
+    <string name="home">Home</string>
+    <string name="reports">Reports</string>
+    <string name="settings">Settings</string>
+</resources>
