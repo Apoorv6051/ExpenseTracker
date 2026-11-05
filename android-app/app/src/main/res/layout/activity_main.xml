@@ -1,239 +1,255 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F1F5F9"
     tools:context=".MainActivity">
 
+    <!-- ScrollView allows the dashboard to scroll vertically -->
     <ScrollView
-        android:id="@+id/main"
+        android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fillViewport="true"
         android:background="#F1F5F9"
-        tools:ignore="DuplicateIds,MissingConstraints"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    </ScrollView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="start"
-        android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingTop="20dp"
-        android:paddingRight="20dp"
-        android:paddingBottom="20dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="-6dp">
-
-        <TextView
-            android:id="@+id/tvAppTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/expensetracker"
-            android:textColor="#0F172A"
-            android:textSize="26sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvSubtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/manage_your_money_smartly"
-            android:textColor="#64748B"
-            android:textSize="14sp" />
-
+        <!-- Main vertical container for all dashboard elements -->
         <LinearLayout
-            android:id="@+id/layoutExpenseCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:background="#1D4ED8"
             android:orientation="vertical"
             android:padding="20dp">
 
+            <!-- App heading -->
             <TextView
-                android:id="@+id/tvMonthlyHeading"
+                android:id="@+id/tvAppTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/total_expenses_this_month"
-                android:textColor="#DBEAFE"
-                android:textSize="12sp"
+                android:text="@string/expensetracker"
+                android:textColor="#0F172A"
+                android:textSize="26sp"
                 android:textStyle="bold" />
 
+            <!-- App subtitle -->
             <TextView
-                android:id="@+id/tvTotalExpenses"
+                android:id="@+id/tvSubtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="@string/_0_00"
-                android:textColor="#FFFFFF"
-                android:textSize="32sp"
-                android:textStyle="bold" />
+                android:layout_marginTop="4dp"
+                android:text="@string/manage_your_money_smartly"
+                android:textColor="#546E7A"
+                android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/tvExpenseDescription"
+            <!-- Monthly expense summary card -->
+            <LinearLayout
+                android:id="@+id/layoutExpenseCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:text="@string/track_where_your_money_goes"
-                android:textColor="#DBEAFE"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tvQuickActions"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:layout_marginBottom="14dp"
-            android:text="@string/quick_actions"
-            android:textColor="#0F172A"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:id="@+id/btnAddExpense"
-            style="?android:attr/buttonBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnHistory"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="3dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/add_expense"
-                android:textColor="#00796B"
-                tools:ignore="TextSizeCheck" />
-
-            <Space
-                android:layout_width="12dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <Button
-                android:id="@+id/button2"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/view_history"
-                android:textColor="#00796B" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tvRecentExpenses"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:text="@string/recent_expenses"
-            android:textColor="#0F172A"
-            android:textSize="28sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:id="@+id/layoutRecentExpenses"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="#FFFFFF"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/no_expenses_yet"
-                android:textColor="#334155"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/your_transactions_will_appear_here"
-                android:textColor="#64748B" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutBottomNavigation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="#FFFFFF"
-            android:baselineAligned="false"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="12dp"
-            tools:ignore="MissingConstraints">
-
-            <LinearLayout
-                android:id="@+id/layoutHome"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
+                android:layout_marginTop="24dp"
+                android:background="#1D4ED8"
                 android:orientation="vertical"
-                tools:ignore="UselessParent">
+                android:padding="20dp">
 
                 <TextView
-                    android:id="@+id/tvHome"
+                    android:id="@+id/tvMonthlyHeading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/home"
-                    android:textColor="#2563EB"
+                    android:text="@string/total_expenses_this_month"
+                    android:textColor="#DBEAFE"
                     android:textSize="12sp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvTotalExpenses"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/_0_00"
+                    android:textColor="#FFFFFF"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvExpenseDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/track_where_your_money_goes"
+                    android:textColor="#DBEAFE"
+                    android:textSize="14sp" />
+
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/layoutReports"
-                android:layout_width="0dp"
+            <!-- Quick Actions heading -->
+            <TextView
+                android:id="@+id/tvQuickActions"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="14dp"
+                android:text="@string/quick_actions"
+                android:textColor="#0F172A"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tvReports"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/reports"
-                    android:textColor="#64748B"
-                    android:textSize="12sp" />
-            </LinearLayout>
-
+            <!-- Quick Action buttons -->
             <LinearLayout
-                android:id="@+id/layoutSettings"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:id="@+id/layoutQuickActions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Add Expense button -->
+                <Button
+                    android:id="@+id/btnAddExpense"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/add_expense"
+                    android:textColor="#00796B" />
+
+                <!-- Space between buttons -->
+                <Space
+                    android:layout_width="12dp"
+                    android:layout_height="1dp" />
+
+                <!-- View History button -->
+                <Button
+                    android:id="@+id/btnViewHistory"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/view_history"
+                    android:textColor="#00796B" />
+
+            </LinearLayout>
+
+            <!-- Recent Expenses heading -->
+            <TextView
+                android:id="@+id/tvRecentExpenses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="@string/recent_expenses"
+                android:textColor="#0F172A"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <!-- Recent expenses container -->
+            <LinearLayout
+                android:id="@+id/layoutRecentExpenses"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="8dp"
+                android:background="#FFFFFF"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvSettings"
+                    android:id="@+id/tvEmptyExpenses"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/settings"
-                    android:textColor="#64748B"
-                    android:textSize="12sp" />
+                    android:text="@string/no_expenses_yet"
+                    android:textColor="#334155"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvEmptyExpensesDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/your_transactions_will_appear_here"
+                    android:textColor="#64748B" />
+
             </LinearLayout>
+
+            <!-- Bottom navigation -->
+            <LinearLayout
+                android:id="@+id/layoutBottomNavigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="#FFFFFF"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <!-- Home navigation -->
+                <LinearLayout
+                    android:id="@+id/layoutHome"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvHome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/home"
+                        android:textColor="#2563EB"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- Reports navigation -->
+                <LinearLayout
+                    android:id="@+id/layoutReports"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvReports"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/reports"
+                        android:textColor="#64748B"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <!-- Settings navigation -->
+                <LinearLayout
+                    android:id="@+id/layoutSettings"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvSettings"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/settings"
+                        android:textColor="#64748B"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
         </LinearLayout>
-    </LinearLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
