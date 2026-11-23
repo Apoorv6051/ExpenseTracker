@@ -1,4 +1,3 @@
-
 package com.apoorv.expensetracker;
 
 import android.content.Intent;
@@ -42,10 +41,14 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
-        // Connect the Add Expense button from XML to Java
+        // ----------------------------------
+        // ADD EXPENSE BUTTON
+        // ----------------------------------
+
+        // Connect the Add Expense button from XML
         Button btnAddExpense = findViewById(R.id.btnAddExpense);
 
-        // Open AddExpenseActivity when the button is clicked
+        // Open AddExpenseActivity when clicked
         btnAddExpense.setOnClickListener(v -> {
 
             Intent intent = new Intent(
@@ -54,7 +57,25 @@ public class MainActivity extends AppCompatActivity {
             );
 
             startActivity(intent);
+        });
 
+
+        // ----------------------------------
+        // VIEW HISTORY BUTTON
+        // ----------------------------------
+
+        // Connect the View History button from XML
+        Button btnViewHistory = findViewById(R.id.btnViewHistory);
+
+        // Open ViewExpensesActivity when clicked
+        btnViewHistory.setOnClickListener(v -> {
+
+            Intent intent = new Intent(
+                    MainActivity.this,
+                    ViewExpensesActivity.class
+            );
+
+            startActivity(intent);
         });
 
     }

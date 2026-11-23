@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary_blue">#3B82F6</color>
+    <color name="screen_background">#121212</color>
+    <color name="surface_color">#1E293B</color>
+    <color name="text_primary">#F8FAFC</color>
+    <color name="text_secondary">#CBD5E1</color>
+    <color name="input_tint">#CBD5E1</color>
+    <color name="button_text">#FFFFFF</color>
+</resources>

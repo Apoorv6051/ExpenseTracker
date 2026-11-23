@@ -22,4 +22,10 @@
     <string name="what_did_you_spend_on">What did you spend on?</string>
     <string name="date">Date</string>
     <string name="select_date">Select Date</string>
+    <string name="expense_history">Expense History</string>
+    <string name="track_all_your_spending_in_one_place">Track all your spending in one place</string>
+    <string name="november_2026">November 2026</string>
+    <string name="food">Food</string>
+    <string name="lunch">Lunch</string>
+    <string name="_07_11_2026">07/11/2026</string>
 </resources>

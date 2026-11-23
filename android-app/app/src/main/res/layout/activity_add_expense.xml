@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#F1F5F9"
+    android:background="@color/screen_background"
     tools:context=".AddExpenseActivity">
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             android:id="@+id/layoutAddExpense"
@@ -20,120 +22,132 @@
             android:orientation="vertical"
             android:padding="24dp">
 
+            <!-- Screen title -->
             <TextView
                 android:id="@+id/tvAddExpenseTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/add_expense"
-                android:textColor="#0F172A"
+                android:textColor="@color/text_primary"
                 android:textSize="28sp"
                 android:textStyle="bold" />
 
+            <!-- Subtitle -->
             <TextView
                 android:id="@+id/tvAddExpenseSubtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:text="@string/enter_your_transaction_details_below"
-                android:textColor="#64748B"
+                android:textColor="@color/text_secondary"
                 android:textSize="14sp" />
 
+            <!-- Amount label -->
             <TextView
                 android:id="@+id/tvAmountLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="@string/amount"
-                android:textColor="#0F172A"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <!-- Amount input -->
             <EditText
                 android:id="@+id/etAmount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:autofillHints=""
-                android:ems="10"
-                android:inputType="text"
+                android:hint="Enter amount"
+                android:inputType="numberDecimal"
                 android:padding="16dp"
-                android:text="Enter amount"
-                android:textSize="16sp"
-                tools:ignore="LabelFor"
-                tools:inputType="numberDecimal" />
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"
+                android:backgroundTint="@color/input_tint"
+                android:textSize="16sp" />
 
+            <!-- Category label -->
             <TextView
                 android:id="@+id/tvCategoryLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="@string/category"
-                android:textColor="#0F172A"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <!-- Category spinner -->
             <Spinner
                 android:id="@+id/spCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:popupBackground="@color/surface_color" />
 
+            <!-- Description label -->
             <TextView
                 android:id="@+id/tvDescriptionLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="@string/description"
-                android:textColor="#0F172A"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <!-- Description input -->
             <EditText
                 android:id="@+id/etDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="top"
                 android:layout_marginTop="8dp"
-                android:autoText="true"
-                android:autofillHints=""
-                android:ems="10"
                 android:gravity="start|top"
-                android:inputType="textMultiLine"
+                android:hint="@string/what_did_you_spend_on"
+                android:inputType="textCapSentences|textMultiLine"
                 android:minLines="2"
                 android:padding="16dp"
-                android:text="@string/what_did_you_spend_on"
-                tools:ignore="Deprecated,LabelFor" />
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"
+                android:backgroundTint="@color/input_tint"
+                android:textSize="16sp" />
 
+            <!-- Date label -->
             <TextView
                 android:id="@+id/tvDateLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="@string/date"
-                android:textColor="#0F172A"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <!-- Select date button -->
             <Button
                 android:id="@+id/btnSelectDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:backgroundTint="#1D4ED8"
+                android:backgroundTint="@color/primary_blue"
                 android:text="Select Date"
-                android:textColor="#FFFFFF" />
+                android:textColor="@color/button_text" />
 
+            <!-- Save expense button -->
             <Button
                 android:id="@+id/btnSaveExpense"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_marginTop="32dp"
-                android:backgroundTint="#1D4ED8"
+                android:backgroundTint="@color/primary_blue"
                 android:text="Save Expense"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/button_text"
                 android:textSize="16sp" />
 
         </LinearLayout>
+
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

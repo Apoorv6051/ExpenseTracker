@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Main app colors -->
+    <color name="primary_blue">#1D4ED8</color>
+
+    <!-- Light mode colors -->
+    <color name="screen_background">#F1F5F9</color>
+    <color name="surface_color">#FFFFFF</color>
+    <color name="text_primary">#0F172A</color>
+    <color name="text_secondary">#64748B</color>
+    <color name="input_tint">#64748B</color>
+    <color name="button_text">#FFFFFF</color>
 </resources>
